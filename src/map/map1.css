@@ -1,0 +1,52 @@
+.map1{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row
+}
+.mapimage{
+    background-image: url("https://wiki.pokemon-vortex.com/images/0/08/Map1.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 500px;
+    width: 500px;
+    display: grid;
+    grid-template-columns: repeat(30, 1fr);
+    grid-template-rows: repeat(30, 1fr);
+    grid-gap: 1px;
+}
+.trainer{
+    height: 16.66667px;
+    width: 16.66667px;
+}
+.arrowUp{
+    transform: rotate(270deg);
+    grid-row: 1;
+    grid-column: 2;
+    width: 100%
+}
+.arrowDown{
+    transform: rotate(90deg);
+    grid-row: 3;
+    grid-column: 2;
+    width: 100%
+}
+.arrowLeft{
+    transform: rotate(180deg);
+    grid-column: 1;
+    grid-row: 2;
+    width: 100%
+}
+.arrowRight{
+    grid-row: 2;
+    grid-column: 3;
+    width: 100%
+}
+.buttons{
+    height: 500px;
+    width: 500px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 0
+}
