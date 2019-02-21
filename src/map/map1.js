@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './map1.css'
 import Trainer from '../trainers/Testtrainer'
+import sprite from './../myCharacterSprite.png'
 
 export default class map1 extends Component {
     constructor() {
@@ -12,9 +13,32 @@ export default class map1 extends Component {
             top: 1,
         }
     }
+    keypress = (e) => {
+        if (e.key === 125) {
+            return this.setState({
+                top: this.state.top + 1
+            })
+        } else if (e.key === 126) {
+            return this.setState({
+                top: this.state.top - 1
+            })
+        } else if (e.key === 123) {
+            return this.setState({
+                right: this.state.right - 1
+            })
+        } else if (e.key === 124) {
+            return this.setState({
+                right: this.state.right + 1
+            })
+        }
+    }
+    componentDidMount() {
+        return function () {
+            window.addEventListener('keypress', this.keypress)
+        }
+    }
 
-
-    moveDown = () => {
+    moveDown = (e) => {
         this.setState({
             top: this.state.top + 1
         })
@@ -37,6 +61,7 @@ export default class map1 extends Component {
 
 
     render() {
+
         let map1 = "https://wiki.pokemon-vortex.com/images/0/08/Map1.png"
         let map2 = "https://wiki.pokemon-vortex.com/images/e/ea/Map2.png"
         let map3 = "https://wiki.pokemon-vortex.com/images/4/4f/Map3.png"
@@ -73,7 +98,7 @@ export default class map1 extends Component {
             <div className="map1">
                 <div className="mapimage">
                     <div className="trainer" style={tainerstyles}>
-                        <img src="https://archives.bulbagarden.net/media/upload/1/10/Maximo_OD.png" />
+                        <img src={sprite} />
                     </div>
                 </div>
                 <div className="buttons">
