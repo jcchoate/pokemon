@@ -19,6 +19,27 @@ app.use(session({
 massive(CONNECTION_STRING).then(db =>
     app.set('db', db)
 )
+app.post('/pokemon',(req, res) => {
+    if (!req.session.pokemon) {
+        req.session.pokemon = []
+    }
+    const {
+        name,
+        level,
+        img,
+        id
+    } = req.body
+    let newItem = {
+        name: name,
+        level: level,
+        img: img,
+        id: id,
+        quantity: 1
+    }
+    
+    req.session.cart.push(newItem)
+    res.status(200).send(req.session.cart)
+},)
 
 app.post('/auth/signup', async (req, res) => {
     let { username, password } = req.body

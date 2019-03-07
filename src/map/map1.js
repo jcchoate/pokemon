@@ -37,9 +37,10 @@ export default class map1 extends Component {
     }
 
     componentDidMount = async () => {
-        axios.get('https://pokeapi.co/api/v2/pokemon-species/?offset=10&limit=802')
+        axios.get('https://pokeapi.co/api/v2/pokemon-species/?offset=0&limit=802')
             .then(res => {
                 console.log(res.data.results)
+                console.log('got stuff')
                 this.setState({
                     pokemon: res.data.results
                 })
@@ -101,8 +102,12 @@ export default class map1 extends Component {
             gridColumn: `${this.state.right}`,
             gridRow: `${this.state.top}`
         }
-        let randomPokemon = this.state.pokemon[Math.floor(Math.random() * this.state.pokemon.length)]
-
+        let randomPokemon = this.state.pokemon[Math.floor(Math.random() * (this.state.pokemon.length + 1000))]
+        var min = 1;
+        var max = 20;
+        var rand =  Math.round(min + (Math.random() * (max-min)));
+        let randomindex = this.state.pokemon.indexOf(randomPokemon) + 1
+        console.log(randomindex)
 
         return (
             <div className="map1">
@@ -111,6 +116,7 @@ export default class map1 extends Component {
                         <img src={sprite} />
                     </div>
                 </div>
+                <div className="sideInfo">
                 <div className="buttons">
                     <img className="arrowUp" src="https://freeiconshop.com/wp-content/uploads/edd/arrow-boxed-outline.png" onClick={this.moveUp} />
                     <img className="arrowDown" src="https://freeiconshop.com/wp-content/uploads/edd/arrow-boxed-outline.png" onClick={this.moveDown} />
@@ -119,8 +125,11 @@ export default class map1 extends Component {
                 </div>
 
                 <NewPokemon
-                    name={randomPokemon}
-                />
+                    id={randomPokemon}
+                    img={randomindex}
+                    level={rand}
+                    />
+                    </div>
             </div>
         )
     }

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { HashRouter, Switch, Route, Link } from "react-router-dom";
 import axios from 'axios'
 
-export default class Register extends Component {
+export default class Signin extends Component {
     constructor() {
         super()
     
@@ -30,12 +30,12 @@ export default class Register extends Component {
         return (
             <HashRouter>
                 <div>
-                    <Link to='/signin'>
-                        <p>Sign in here</p>
+                    <input className="input" placeholder="Pineapple ID" onChange={(e) => this.setState({ username: e.target.value })}></input>
+                    <input className="input" placeholder="Password" onChange={(e) => this.setState({ password: e.target.value })}></input>
+                    <button className="button" onClick={()=>this.login()}>Sign In</button>
+                    <Link to="/register">
+                    <p>Don't have an account? Create one now</p>
                     </Link>
-                    <input placeholder="name@example.com" onChange={(e) => this.setState({ username: e.target.value })}></input>
-                    <input placeholder="password" onChange={(e) => this.setState({ password: e.target.value })}></input>
-                    <button onClick={()=> this.signup()}>Continue</button>
                 </div>
             </HashRouter>
         )

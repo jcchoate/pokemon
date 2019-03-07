@@ -2,7 +2,8 @@
     width: 100%;
     height: 100vh;
     display: flex;
-    flex-direction: row
+    flex-direction: row;
+    justify-content: center
 }
 .backgroundImage{
     background-image: url("https://wiki.pokemon-vortex.com/images/0/08/Map1.png");
@@ -14,6 +15,10 @@
     grid-template-columns: repeat(30, 1fr);
     grid-template-rows: repeat(30, 1fr);
     grid-gap: 1px;
+}
+.sideInfo{
+    display: flex;
+    flex-direction: column
 }
 .trainer{
     height: 16.66667px;
