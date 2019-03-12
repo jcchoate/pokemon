@@ -7,21 +7,21 @@ export default class NewPokemon extends Component {
 
         this.state = {
             pokemon: '',
-            img: ''
+            img: '',
+            lvl: ''
         }
     }
-    addItemFn() {
-        let {id, level, img} = this.props
+    capturePokemon = ()=>{
+        this.setState({pokemon: this.props.id.name, img: this.props.img, lvl: this.props.level })
         axios
             .post('/pokemon',
                 {
-                    name: 'PacBook Pro',
-                    price: '7548.98',
-                    imageAddress: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/image/AppleInc/aos/published/images/M/BP/MBP15G/201807/MBP15G-201807?wid=800&hei=800&fmt=jpeg&qlt=80&op_usm=0.5,1.5&fit=constrain&.v=1531249595742',
-                    id: 1
+                    pokemon: this.state.pokemon,
+                    img: this.state.img,
+                    lvl: this.state.lvl
                 })
             .then((res) => {
-                this.setState({ items: res.data })
+                this.setState({ pokemon: res.data, img: res.data, lvl: res.data })
                 console.log('hit')
             })
     }
@@ -36,6 +36,7 @@ export default class NewPokemon extends Component {
                         <div>{this.props.id ? <h1>{this.props.id.name} appeared!</h1> : null}</div>
                         <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${this.props.img}.png`} alt="pokemon sprite" />
                         <p>Level {this.props.level}</p>
+                        <button onClick={this.capturePokemon}>Capture</button>
                     </div>
                     : <p>There's no pokemon now</p>
                 }

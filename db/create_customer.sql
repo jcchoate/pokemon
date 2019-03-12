@@ -1,9 +1,9 @@
-INSERT INTO users
+INSERT INTO pokemonusers
 (
-    username, hash
+    email, hash, pokemon, team
 )
 VALUES
 (
-    $1, $2
+    $1, $2, $3, $4
 )
 RETURNING *;

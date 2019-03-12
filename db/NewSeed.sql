@@ -1,8 +1,11 @@
-drop table if EXISTS user;
-CREATE TABLE if not exists user (
+drop table if EXISTS pokemonuser;
+CREATE TABLE if not exists pokemonuser (
 	id serial primary key,
-	username TEXT,
-	hash TEXT
+	email TEXT,
+	hash TEXT,
+	pokemon TEXT,
+	team TEXT,
+	inventory TEXT
 );
 
 drop table if exists orders;
